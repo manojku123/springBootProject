@@ -1,0 +1,12 @@
+<nav class='navbar navbar-expand navbar-light bg-light'>
+        <a class='navbar-brand'><h1>{{title}}</h1></a>
+        <ul class='nav nav-pills'>
+          <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/home']">Home</a></li>
+          <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/expenseTracker']">eTracker</a></li>
+        </ul>
+        <a class='navbar-brand'></a>
+    </nav>
+    <div class='container' style="margin-top: 15px ">
+      <router-outlet></router-outlet>
+    </div>
+

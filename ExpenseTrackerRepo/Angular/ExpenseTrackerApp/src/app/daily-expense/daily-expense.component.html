@@ -1,0 +1,77 @@
+<div class="container" style="background-color: lightgray" >
+  <div class="header" style="text-align: center;" >
+<h5>{{catName}} expenses</h5>
+  </div>
+  <div class='table-responsive'>
+<form (ngSubmit)="onSubmit()" #formName="ngForm">
+      <table class=" table order-list" border="2">
+        <thead>
+          <tr>
+            <th>Items</th>
+            <th>amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td class="co-sm-4" >
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="name"
+                             required
+                             [(ngModel)]="expenseModel[0].item" name="item"
+                             #item="ngModel">
+                      <div [hidden]="item.valid || item.pristine"
+                           class="alert alert-danger">
+                        Name is required
+                      </div>
+                    </div>
+
+              </td>
+              <td class="co-sm-4" >
+                  <div class="form-group">
+                      <input type="number" class="form-control" id="amount"
+                             required
+                             [(ngModel)]="expenseModel[0].amount" name="amount"
+                             #amount="ngModel">
+                      <div [hidden]="amount.valid || amount.pristine"
+                           class="alert alert-danger">
+                        amount is required
+                      </div>
+                    </div>
+              
+              </td>
+          </tr>
+          <tr *ngFor='let item of addMoreItem let i = index'>
+           
+              <td class="co-sm-3" ><label>item:</label><br>
+                <div class="form-group">
+                  <input type="text" class="form-control" 
+                         required
+                         [(ngModel)]="expenseModel[i+1].item" name={{item0123}}
+                         #{{item0123}}="ngModel">
+                  
+                </div>
+              </td>
+              <td class="co-sm-2" ><label>amount:</label><br>
+                <div class="form-group">
+                  <input type="number" class="form-control" id="amount"
+                         required
+                         [(ngModel)]="expenseModel[i+1].amount" name={{amount0123}}
+                         #{{amount0123}}="ngModel">
+                   
+                </div>
+              </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button class="btn btn-success" type="submit"
+              [disabled]="!formName.form.valid">submit</button>
+            </td> 
+        </tr>
+        </tbody>
+      </table>
+      </form>
+      <button class="btn btn-primary" type="button" (click)="addMore()">add</button>
+      <button class="btn btn-dark" (click)="deleteItem(i)" *ngIf="hide">delete</button>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="header" style="text-align: center;" >
+<h5>Set your monthly budget limit</h5>
+    </div>
+ <!--The content below is only a placeholder and can be replaced.-->      
+ <form (ngSubmit)="onSubmit()" #f="ngForm">   
+       
+    <table border="2" align="center">
+     <tr>
+       <th>Item</th>
+       <th>amounnt</th>
+     </tr>
+    
+         <tr *ngFor ='let cat of expenseCategory, let i=index'>
+          <td>{{expenseCategory[i].category}}</td>
+            <td> 
+               <div class="form-group">
+              <input type="number" class="form-control" id="Shopping"
+                    required
+                    [(ngModel)]="budgetLimit[i].amount" name="Shopping"
+                    #Shopping="ngModel">
+             <div [hidden]="Shopping.valid || Shopping.pristine"
+                  class="alert alert-danger">amount is required
+             </div>
+             </div>
+           </td>
+           
+         </tr>
+</table>
+<div class="text-center" style="margin-top: 10px">
+<button class="btn btn-success" type="submit"
+[disabled]="!f.form.valid">submit</button>
+</div>
+</form>
+</div>

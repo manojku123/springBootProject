@@ -1,0 +1,52 @@
+    
+<div class="container" style="width: 1400px; height: 500px;">
+    <div class="row" style="background-color: cyan; margin-top: 10px">
+            <div class="col-md-4" style="color:black">{{userName}}</div>
+        <div class="col-md-5" style="color:black">
+            Daily Expense Tracker
+        </div>
+        <div class="col-md-2" >Date:
+        {{today | date}}
+        </div>
+    </div>
+    <div style="text-align: center; color:red;background-color:white;margin-top: 10px">{{message}}</div>
+    <hr>
+    <div class="row" style="float: right; margin-right: 10px; margin-bottom: 50px">
+        <div  style="margin-right: 10px">
+            <a [routerLink]="['/limit']"><button class="btn btn-primary">Set Limits
+                </button></a>   
+        </div>
+        
+        <div style="margin-right: 10px">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Add Expense
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <table>
+                    <tbody>
+                        <tr *ngFor='let eCat of expCategory'>
+               <td> <a [routerLink]="['/expense']"><button ngbDropdownItem (click)="onclick(eCat.category)" >{{eCat.category}}</button></a></td>
+                       </tr>
+                </tbody>
+                </table>
+                </div>
+              </div>
+        </div>
+        <div > 
+                <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>generate report
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <a [routerLink]="['/report']"><button ngbDropdownItem (click)="onClick1('5')" >last five record</button></a>
+                        <a [routerLink]="['/report']"><button ngbDropdownItem (click)="onClick1('10')">last ten record</button></a>
+                        <a [routerLink]="['/report']"><button ngbDropdownItem (click)="onClick1('20')">last twenty record</button></a>
+                        <a [routerLink]="['/report']"><button ngbDropdownItem (click)="onClick1('30')">last thirty record</button></a>
+                        <a [routerLink]="['/report']"><button ngbDropdownItem (click)="onClick1('50')">last fifty record</button></a>
+                        </div>
+                      </div>
+        </div>
+    </div>
+
+</div>
+
+

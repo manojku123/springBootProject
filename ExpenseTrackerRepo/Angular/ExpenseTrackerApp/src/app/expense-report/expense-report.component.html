@@ -1,0 +1,79 @@
+<div class="container" *ngIf='shoppingLength>0 || foodLength>0 || travelingLength>0 ||
+  entertainmentLength>0 || othersLength>0'>
+    <div class="header" style="text-align: center;" >
+        <h5>Find your expense Report</h5>
+          </div>
+    <div class="table-responsive">
+        <table class=" table order-list" border="2">
+            <thead>
+              <tr style="background-color:lightgreen; border: 3px solid blue">
+                <th>date</th>
+                <th>category</th>
+                <th>amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <th style="background-color: lightgray">shoping record</th>
+              <th style="background-color: lightgray"></th>
+              <th style="background-color: lightgray"></th>
+                <tr *ngFor='let shop of shopping let i=index'>
+                    <td *ngIf='shoppingLength-(i)<=num'>{{shop.date}}</td>
+                    <td *ngIf='shoppingLength-(i)<=num'>{{shop.item}}</td>
+                    <td *ngIf='shoppingLength-(i)<=num'>{{shop.amount}}</td>
+                    
+                </tr>
+                <tr style="background-color: lightskyblue"><td>total</td><td></td><td>{{totalShoppingAmount}}</td></tr>
+
+                <th style="background-color: lightgray">food record</th>
+                <th style="background-color: lightgray"></th>
+              <th style="background-color: lightgray"></th>
+                <tr *ngFor='let food of food let i=index'>
+                  <td *ngIf='foodLength-(i)<=num'>{{food.date}}</td>
+                  <td *ngIf='foodLength-(i)<=num'>{{food.item}}</td>
+                  <td *ngIf='foodLength-(i)<=num'>{{food.amount}}</td>
+                </tr>
+
+                <tr style="background-color: lightskyblue"><td>total</td><td></td><td>{{totalFoodAmount}}</td></tr>
+
+                <th style="background-color: lightgray">traveling record</th>
+                <th style="background-color: lightgray"></th>
+              <th style="background-color: lightgray"></th>
+                <tr *ngFor='let trav of traveling let i=index'>
+                    <td *ngIf='travelingLength-(i)<=num'>{{trav.date}}</td>
+                    <td *ngIf='travelingLength-(i)<=num'>{{trav.item}}</td>
+                    <td *ngIf='travelingLength-(i)<=num'>{{trav.amount}}</td>
+                </tr>
+                <tr style="background-color: lightskyblue"><td>total</td><td></td><td>{{totalTravelingAmount}}</td></tr>
+
+                <th style="background-color: lightgray">entertainment record</th>
+                <th style="background-color: lightgray"></th>
+              <th style="background-color: lightgray"></th>
+                <tr *ngFor='let enter of entertainment let i=index'>
+                    <td *ngIf='entertainmentLength-(i)<=num'>{{enter.date}}</td>
+                    <td *ngIf='entertainmentLength-(i)<=num'>{{enter.item}}</td>
+                    <td *ngIf='entertainmentLength-(i)<=num'>{{enter.amount}}</td>
+                </tr>
+
+                <tr style="background-color: lightskyblue"><td>total</td><td></td><td>{{totalEntertainmentAmount}}</td></tr>
+
+                <th style="background-color: lightgray">others record</th>
+                <th style="background-color: lightgray"></th>
+              <th style="background-color: lightgray"></th>
+                <tr *ngFor='let other of others let i=index'>
+                    <td *ngIf='othersLength-(i)<=num'>{{other.date}}</td>
+                    <td *ngIf='othersLength-(i)<=num'>{{other.item}}</td>
+                    <td *ngIf='othersLength-(i)<=num'>{{other.amount}}</td>
+                </tr>
+                <tr style="background-color: lightskyblue"><td>total</td><td></td><td>{{totalOthersAmount}}</td></tr>
+
+            </tbody>
+          </table>
+          <button class="btn btn-dark" (click)="goHome()">Back</button>
+    </div>
+</div>
+<div class="text-center" *ngIf="shoppingLength==0 && foodLength==0 && travelingLength==0 &&
+entertainmentLength==0 && othersLength==0">
+  <div style="color: red; background-color:whitesmoke">please add expenses first.<hr></div>
+  <div><button class="btn btn-primary" (click)="goBack()">Back</button></div>
+
+</div>
